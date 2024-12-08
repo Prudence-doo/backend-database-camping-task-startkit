@@ -12,7 +12,7 @@ CREATE TABLE "USER" (
     email VARCHAR(320),
     role VARCHAR(20),
     created_at TIMESTAMP,
-    update_at TIMESTAMP
+    update_at TIMESTAMP;
 -- 1. 新增：新增六筆用戶資料，資料如下：
 --     1. 用戶名稱為`李燕容`，Email 為`lee2000@hexschooltest.io`，Role為`USER`
 --     2. 用戶名稱為`王小明`，Email 為`wXlTq@hexschooltest.io`，Role為`USER`
@@ -20,7 +20,7 @@ CREATE TABLE "USER" (
 --     4. 用戶名稱為`好野人`，Email 為`richman@hexschooltest.io`，Role為`USER`
 --     5. 用戶名稱為`Q太郎`，Email 為`starplatinum@hexschooltest.io`，Role為`USER`
 --     6. 用戶名稱為 透明人，Email 為 opacity0@hexschooltest.io，Role 為 USER
-NSERT INTO "USER" (name,email,role)
+INSERT INTO "USER" (name,email,role)
 VALUES
 ('李燕容','lee2000@hexschooltest.io','USER'),
 ('王小明','wXlTq@hexschooltest.io','USER'),
@@ -75,7 +75,7 @@ VALUES
 ('21堂組合包方案',21, 4800);
 -- 2-2. 新增：在 `CREDIT_PURCHASE` 資料表，新增三筆資料：（請使用 name 欄位做子查詢）
     -- 1. `王小明` 購買 `14 堂組合包方案`
-    insert into"CREDIT_PURCHASE"(user_id,credit_package_id, purchased_credits, price_paid) values
+insert into"CREDIT_PURCHASE"(user_id,credit_package_id, purchased_credits, price_paid) values
 ((select id from "USER" where email = 'wXlTq@hexschooltest.io'),
   (select id from "CREDIT_PACKAGE" where name = '14堂組合包方案'),
   (select credit_amount from "CREDIT_PACKAGE" where name = '14堂組合包方案'),
@@ -83,7 +83,7 @@ VALUES
 
     -- 2. `王小明` 購買 `21 堂組合包方案`
 
-        insert into"CREDIT_PURCHASE"(user_id,credit_package_id, purchased_credits, price_paid) values
+insert into"CREDIT_PURCHASE"(user_id,credit_package_id, purchased_credits, price_paid) values
 ((select id from "USER" where email = 'wXlTq@hexschooltest.io'),
   (select id from "CREDIT_PACKAGE" where name = '21堂組合包方案'),
   (select credit_amount from "CREDIT_PACKAGE" where name = '21堂組合包方案'),
@@ -208,7 +208,8 @@ WHERE name IN ('空中瑜珈');
 insert into "COURSE_BOOKING" (user_id,course_id,booking_at,status) values
 ((select id from "USER" where email = 'wXlTq@hexschooltest.io'),
 1,
- '2024-11-24 16:00:00','即將授課'
+ '2024-11-24 16:00:00',
+ '即將授課'
   );
 
     -- 2. 新增： `好野人` 預約 `李燕容` 的課程
